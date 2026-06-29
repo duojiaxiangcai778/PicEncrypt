@@ -487,7 +487,7 @@ class PicEncryptApp:
 
     def __init__(self, root):
         self.root = root
-        self.root.title("PicEncrypt - 图片混淆工具")
+        self.root.title("图片混淆")
         self.root.geometry("960x680")
         self.root.minsize(800, 600)
 
@@ -549,11 +549,11 @@ class PicEncryptApp:
         top = tk.Frame(root, bg=self.BG)
         top.pack(fill=tk.X, padx=12, pady=(12, 4))
 
-        lbl_title = tk.Label(top, text="🔒 PicEncrypt", font=(self.FONT_FAMILY, 18, "bold"),
+        lbl_title = tk.Label(top, text="🔒 图片混淆", font=(self.FONT_FAMILY, 18, "bold"),
                              bg=self.BG, fg=self.ACCENT)
         lbl_title.pack(side=tk.LEFT)
 
-        lbl_sub = tk.Label(top, text="图片混淆工具 — 6种算法",
+        lbl_sub = tk.Label(top, text="6种算法 · 兼容 Android PicEncrypt",
                            font=(self.FONT_FAMILY, 10), bg=self.BG, fg=self.TEXT_LIGHT)
         lbl_sub.pack(side=tk.LEFT, padx=(12, 0), pady=(6, 0))
 
