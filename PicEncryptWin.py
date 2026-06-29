@@ -1,24 +1,38 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-PicEncrypt Windows 桌面版
+图片混淆 - Windows 桌面版
 基于 https://github.com/jiarandiana0307/PicEncrypt 移植
 支持6种图片混淆方法
 """
 
 import os
 import sys
+
+# ─── 依赖检测 ───
+try:
+    from PIL import Image as PILImage, ImageTk
+except ImportError:
+    print("❌ 缺少依赖: Pillow (PIL)")
+    print("请在终端运行以下命令安装：")
+    print("  uv pip install pillow numpy")
+    print("或者直接双击运行「图片混淆.exe」免安装版")
+    sys.exit(1)
+
+try:
+    import numpy as np
+except ImportError:
+    print("❌ 缺少依赖: numpy")
+    print("请在终端运行以下命令安装：")
+    print("  uv pip install numpy")
+    sys.exit(1)
+
 import json
 import math
 import hashlib
 import traceback as _tb
 import threading
 from datetime import datetime
-from concurrent.futures import ThreadPoolExecutor, as_completed
-
-# ─── 第三方 ───
-from PIL import Image as PILImage, ImageTk
-import numpy as np
 
 # ─── tkinter ───
 import tkinter as tk
