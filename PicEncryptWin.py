@@ -24,7 +24,7 @@ except ImportError:
     )
     sys.stderr.write(msg + "\n")
     sys.stderr.flush()
-    sys.exit(1)
+    os._exit(1)
 
 try:
     import numpy as np
@@ -40,7 +40,7 @@ except ImportError:
     )
     sys.stderr.write(msg + "\n")
     sys.stderr.flush()
-    sys.exit(1)
+    os._exit(1)
 
 import json
 import math
