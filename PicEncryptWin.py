@@ -13,18 +13,33 @@ import sys
 try:
     from PIL import Image as PILImage, ImageTk
 except ImportError:
-    print("❌ 缺少依赖: Pillow (PIL)")
-    print("请在终端运行以下命令安装：")
-    print("  uv pip install pillow numpy")
-    print("或者直接双击运行「图片混淆.exe」免安装版")
+    import sys
+    msg = (
+        "❌ 缺少依赖: Pillow (PIL)\n\n"
+        "请用以下任意一种方式运行：\n\n"
+        "  ✅ 方案一：双击「图片混淆.exe」（推荐，免安装）\n"
+        "  ✅ 方案二：双击「运行源码.bat」（自动用 uv 运行）\n"
+        "  ✅ 方案三：在终端执行：uv run python PicEncryptWin.py\n"
+        "  ✅ 方案四：安装依赖后运行：uv pip install pillow numpy\n"
+    )
+    sys.stderr.write(msg + "\n")
+    sys.stderr.flush()
     sys.exit(1)
 
 try:
     import numpy as np
 except ImportError:
-    print("❌ 缺少依赖: numpy")
-    print("请在终端运行以下命令安装：")
-    print("  uv pip install numpy")
+    import sys
+    msg = (
+        "❌ 缺少依赖: numpy\n\n"
+        "请用以下任意一种方式运行：\n\n"
+        "  ✅ 双击「图片混淆.exe」（推荐，免安装）\n"
+        "  ✅ 双击「运行源码.bat」\n"
+        "  ✅ uv run python PicEncryptWin.py\n"
+        "  ✅ uv pip install numpy\n"
+    )
+    sys.stderr.write(msg + "\n")
+    sys.stderr.flush()
     sys.exit(1)
 
 import json
