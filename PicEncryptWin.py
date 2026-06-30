@@ -22,9 +22,10 @@ except ImportError:
         "  ✅ 方案三：在终端执行：uv run python PicEncryptWin.py\n"
         "  ✅ 方案四：安装依赖后运行：uv pip install pillow numpy\n"
     )
-    sys.stderr.write(msg + "\n")
-    sys.stderr.flush()
-    os._exit(1)
+    out = sys.stderr or sys.__stderr__ or sys.stdout or __import__('os').devnull
+    out.write(msg + "\n")
+    out.flush()
+    os._exit(1)  # 直接终止，避免 sys.exit 在 except 块中产生异常链 traceback
 
 try:
     import numpy as np
@@ -38,8 +39,9 @@ except ImportError:
         "  ✅ uv run python PicEncryptWin.py\n"
         "  ✅ uv pip install numpy\n"
     )
-    sys.stderr.write(msg + "\n")
-    sys.stderr.flush()
+    out = sys.stderr or sys.__stderr__ or sys.stdout or __import__('os').devnull
+    out.write(msg + "\n")
+    out.flush()
     os._exit(1)
 
 import json
